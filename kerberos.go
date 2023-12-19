@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/masterzen/winrm/soap"
+	"github.com/thoohv5/winrm/soap"
 
 	"github.com/jcmturner/gokrb5/v8/client"
 	"github.com/jcmturner/gokrb5/v8/config"
@@ -90,7 +90,7 @@ func (c *ClientKerberos) Post(clt *Client, request *soap.SoapMessage) (string, e
 			client.DisablePAFXFAST(true), client.AssumePreAuthentication(true))
 	}
 
-	//create an http request
+	// create an http request
 	winrmURL := fmt.Sprintf("%s://%s:%d/wsman", c.Proto, c.Hostname, c.Port)
 	//nolint:noctx
 	winRMRequest, _ := http.NewRequest("POST", winrmURL, strings.NewReader(request.String()))
